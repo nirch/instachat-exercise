@@ -16,17 +16,17 @@ All client-side logic lives in a single `RealtimeChat` class (~185 lines), mixin
 
 ## Acceptance Criteria
 
-- [ ] WebSocket lifecycle (connect, reconnect, error handling) lives in its own unit.
-- [ ] Outbound message construction (typing, final message, username change) lives in its own unit, separate from transport.
-- [ ] Inbound message dispatch (`handleMessage`) lives in its own unit and delegates to rendering.
-- [ ] DOM rendering (typing bubble, final message card, system message, scroll) lives in its own unit; `addFinalMessage`, `updateTypingMessage`, `addSystemMessage` are not mixed with connection code.
-- [ ] The duplicated message-header+content HTML template is extracted into a single builder function used by all three message renderers.
-- [ ] `escapeHtml` and `formatTime` are co-located as pure utility helpers, not instance methods on the chat class.
-- [ ] All names clearly reflect their purpose — no "handle" prefix on functions that are really "render", no "Final" vs "Typing" asymmetry without explanation.
-- [ ] Logic is split into multiple `.js` files, each loaded as a classic `<script>` tag in `index.html`; modules communicate via plain globals (no `import`/`export`).
-- [ ] The top-level coordinator is renamed from `RealtimeChat` to `ChatApp` (or similarly descriptive name) to signal it is a thin wiring layer, not a god class.
-- [ ] The entry point (`new ChatApp()`) wires the modules together and is the only place that knows about all of them.
-- [ ] Existing runtime behaviour is unchanged: typing indicators update live, final messages appear and clear the typing bubble, username changes propagate, reconnect retries every 3 s.
+- [x] WebSocket lifecycle (connect, reconnect, error handling) lives in its own unit.
+- [x] Outbound message construction (typing, final message, username change) lives in its own unit, separate from transport.
+- [x] Inbound message dispatch (`handleMessage`) lives in its own unit and delegates to rendering.
+- [x] DOM rendering (typing bubble, final message card, system message, scroll) lives in its own unit; `addFinalMessage`, `updateTypingMessage`, `addSystemMessage` are not mixed with connection code.
+- [x] The duplicated message-header+content HTML template is extracted into a single builder function used by all three message renderers.
+- [x] `escapeHtml` and `formatTime` are co-located as pure utility helpers, not instance methods on the chat class.
+- [x] All names clearly reflect their purpose — no "handle" prefix on functions that are really "render", no "Final" vs "Typing" asymmetry without explanation.
+- [x] Logic is split into multiple `.js` files, each loaded as a classic `<script>` tag in `index.html`; modules communicate via plain globals (no `import`/`export`).
+- [x] The top-level coordinator is renamed from `RealtimeChat` to `ChatApp` (or similarly descriptive name) to signal it is a thin wiring layer, not a god class.
+- [x] The entry point (`new ChatApp()`) wires the modules together and is the only place that knows about all of them.
+- [x] Existing runtime behaviour is unchanged: typing indicators update live, final messages appear and clear the typing bubble, username changes propagate, reconnect retries every 3 s.
 
 ## Out of Scope
 
