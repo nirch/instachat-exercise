@@ -15,7 +15,8 @@ const typingTimeouts = new Map();
 wss.on('connection', (ws) => {
     const clientId = generateClientId();
     clients.set(clientId, { ws, username: 'Anonymous' });
-    
+    broadcastUserList();
+
     console.log(`Client ${clientId} connected`);
     
     ws.on('message', (message) => {
@@ -39,6 +40,7 @@ wss.on('connection', (ws) => {
         clients.delete(clientId);
         clearTimeout(typingTimeouts.get(clientId));
         typingTimeouts.delete(clientId);
+        broadcastUserList();
     });
     
     ws.on('error', (error) => {
@@ -53,6 +55,7 @@ function handleMessage(clientId, data) {
     switch (data.type) {
         case 'username_change':
             client.username = data.username;
+            broadcastUserList();
             break;
             
         case 'typing':
@@ -99,6 +102,15 @@ function handleMessage(clientId, data) {
             });
             break;
     }
+}
+
+function broadcastUserList() {
+    clients.forEach((client, clientId) => {
+        if (client.ws.readyState !== WebSocket.OPEN) return;
+        const users = [];
+        clients.forEach((c, id) => { if (id !== clientId) users.push(c.username); });
+        client.ws.send(JSON.stringify({ type: 'user_list', users }));
+    });
 }
 
 function broadcastToAll(data) {

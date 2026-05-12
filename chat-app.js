@@ -1,6 +1,7 @@
 class ChatApp {
     constructor() {
         this.renderer = new MessageRenderer(document.getElementById('messages'));
+        this.usersSidebar = new UsersSidebar(document.getElementById('usersList'));
 
         this.connection = new ChatConnection({
             onMessage: (data) => this._dispatch(data),
@@ -28,8 +29,12 @@ class ChatApp {
             case 'user_stopped_typing':
                 this.renderer.removeTypingBubble(data.username);
                 break;
+            case 'user_list':
+                this.usersSidebar.update(data.users);
+                break;
         }
     }
+
 }
 
 new ChatApp();

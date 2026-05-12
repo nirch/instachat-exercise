@@ -12,13 +12,13 @@ Users can't see who else is in the chat. Before sending a direct message to some
 - As a user, I want to see a placeholder when no one else is online so that I understand why the list is empty.
 
 ## Acceptance Criteria
-- [ ] A sidebar panel is visible in the app showing the heading "Online" (or similar).
-- [ ] The sidebar lists the usernames of all currently connected users except the local user.
-- [ ] When a new user connects, their username appears in the sidebar within one second (no manual refresh).
-- [ ] When a user disconnects, their username is removed from the sidebar within one second.
-- [ ] When a user changes their username, the sidebar reflects the new name immediately.
-- [ ] If no other users are online, the sidebar shows an empty-state message (e.g. "No one else is online").
-- [ ] The sidebar does not break or duplicate entries when the same browser tab reconnects after a drop.
+- [x] A sidebar panel is visible in the app showing the heading "Online" (or similar).
+- [x] The sidebar lists the usernames of all currently connected users except the local user.
+- [x] When a new user connects, their username appears in the sidebar within one second (no manual refresh).
+- [x] When a user disconnects, their username is removed from the sidebar within one second.
+- [x] When a user changes their username, the sidebar reflects the new name immediately.
+- [x] If no other users are online, the sidebar shows an empty-state message (e.g. "No one else is online").
+- [x] The sidebar does not break or duplicate entries when the same browser tab reconnects after a drop.
 
 ## UI/UX Notes
 - **Layout:** Sidebar sits alongside the existing chat panel. On desktop it can be a fixed-width column on the right or left. The existing chat area should not be obscured.
