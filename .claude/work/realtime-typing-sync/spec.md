@@ -12,13 +12,13 @@ The live chat feature only broadcasts a user's text to other clients on the firs
 - As a user who clears their input and starts over, I want the other participant's view to reset accordingly, so they don't see stale text.
 
 ## Acceptance Criteria
-- [ ] Every keystroke in the message input is broadcast to all other connected clients, regardless of how many messages have already been sent.
-- [ ] The receiving client updates the live typing indicator in place with the sender's current text after every keystroke.
-- [ ] When the sender submits a message (Enter / Send button), the live typing indicator is cleared on all other clients and a final message entry is added.
-- [ ] When the sender clears the input field without submitting (e.g. deletes all text), the typing indicator on other clients reflects the empty state or disappears (no special handling required — existing behavior is acceptable).
-- [ ] The fix applies to all users in the session, not just the first to type.
-- [ ] Anonymous users (those who have not set a username) can also trigger and receive live typing updates.
-- [ ] No regressions: the first message still works as before.
+- [x] Every keystroke in the message input is broadcast to all other connected clients, regardless of how many messages have already been sent.
+- [x] The receiving client updates the live typing indicator in place with the sender's current text after every keystroke.
+- [x] When the sender submits a message (Enter / Send button), the live typing indicator is cleared on all other clients and a final message entry is added.
+- [x] When the sender clears the input field without submitting (e.g. deletes all text), the typing indicator on other clients reflects the empty state or disappears (no special handling required — existing behavior is acceptable).
+- [x] The fix applies to all users in the session, not just the first to type.
+- [x] Anonymous users (those who have not set a username) can also trigger and receive live typing updates.
+- [x] No regressions: the first message still works as before.
 
 ## Out of Scope
 - Multi-room or channel support.

@@ -109,8 +109,6 @@ class RealtimeChat {
     }
     
     updateTypingMessage(data) {
-        if (data.username === this.username) return;
-        
         let messageElement = this.currentTypingUsers.get(data.username);
         
         if (!messageElement) {
